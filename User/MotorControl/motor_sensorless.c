@@ -314,6 +314,8 @@ void Sensorless_Control()
 			MC.Foc.Ud = MC.IdPid.Out + MC.HFI.Uin;			
             IPack_Transform(&MC.Foc);                                        //·´PACK±ä»»
 
+
+///*ÇÐ»¬Ä¤¹Û²âÆ÷*/
 //			MC.SMO.Ialpha = MC.Foc.Ialpha;
 //			MC.SMO.Ibeta  = MC.Foc.Ibeta;
 //			MC.SMO.Ualpha = MC.Foc.Ualpha;

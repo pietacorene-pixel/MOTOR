@@ -6,89 +6,91 @@
 
 typedef struct
 {  	
-	float Ts;	                  //µ÷ÓÃÖÜÆÚ	
-	float Rs;                   //Ïàµç×è
-	float Ld;                   //Ïàµç¸Ğ
-  float Gain;                 //»¬Ä¤¹Û²âÆ÷ÔöÒæ
+	float Ts;	                  //è°ƒç”¨å‘¨æœŸ	
+	float Rs;                   //ç›¸ç”µé˜»
+	float Ld;                   //ç›¸ç”µæ„Ÿ
+  float Gain;                 //æ»‘è†œè§‚æµ‹å™¨å¢ç›Š
 	
-  float Ialpha;               //¦ÁÖáÊµ¼ÊµçÁ÷
-	float Ibeta;                //¦ÂÖáÊµ¼ÊµçÁ÷		
+  float Ialpha;               //Î±è½´å®é™…ç”µæµ
+	float Ibeta;                //Î²è½´å®é™…ç”µæµ		
 	
-  float IalphaFore;           //¦ÁÖáÔ¤²âµçÁ÷
-	float IbetaFore;            //¦ÂÖáÔ¤²âµçÁ÷
+  float IalphaFore;           //Î±è½´é¢„æµ‹ç”µæµ
+	float IbetaFore;            //Î²è½´é¢„æµ‹ç”µæµ
 	
-  float Ualpha;               //¦ÁÖáÊµ¼ÊµçÑ¹
-	float Ubeta;                //¦ÂÖáÊµ¼ÊµçÑ¹	
+  float Ualpha;               //Î±è½´å®é™…ç”µå‹
+	float Ubeta;                //Î²è½´å®é™…ç”µå‹	
 	
-	float EalphaFore;           //¦ÁÖáÔ¤²â·´ÊÆ
-	float EalphaForeLPF;        //¦ÁÖáÔ¤²â·´ÊÆÂË²¨Öµ	
+	float EalphaFore;           //Î±è½´é¢„æµ‹ååŠ¿
+	float EalphaForeLPF;        //Î±è½´é¢„æµ‹ååŠ¿æ»¤æ³¢å€¼	
 
-	float EbetaFore;            //¦ÂÖáÔ¤²â·´ÊÆ
-	float EbetaForeLPF;         //¦ÂÖáÔ¤²â·´ÊÆÂË²¨Öµ
+	float EbetaFore;            //Î²è½´é¢„æµ‹ååŠ¿
+	float EbetaForeLPF;         //Î²è½´é¢„æµ‹ååŠ¿æ»¤æ³¢å€¼
 	
-	float EabForeLPFFactor;     //¦Á¦ÂÖáÔ¤²â·´ÊÆÂË²¨ÏµÊı
+	float EabForeLPFFactor;     //Î±Î²è½´é¢„æµ‹ååŠ¿æ»¤æ³¢ç³»æ•°
 }SMO_STRUCT;
 
 typedef struct
 {
-	u8    NSDOut;	            //±æÊ¶½á¹ûÊä³ö
-  u8    NSDFlag;            //¼«ĞÔ±æÊ¶±êÖ¾	
-	u16   NSDCount;           //¼ÆÊı±äÁ¿
+	u8    NSDOut;	            //è¾¨è¯†ç»“æœè¾“å‡º
+  u8    NSDFlag;            //ææ€§è¾¨è¯†æ ‡å¿—	
+	u16   NSDCount;           //è®¡æ•°å˜é‡
 	float NSDSum1;
 	float NSDSum2;	
 	
-	float IdRef;              //¼«ĞÔ±æÊ¶Ê±dÖá¸ø¶¨
-	float IdHigh;    					//¼«ĞÔ±æÊ¶Ê±Ö»ÓÃµ½dÖá¸ßÆµ·ÖÁ¿
+	float IdRef;              //ææ€§è¾¨è¯†æ—¶dè½´ç»™å®š
+	float IdHigh;    					//ææ€§è¾¨è¯†æ—¶åªç”¨åˆ°dè½´é«˜é¢‘åˆ†é‡
 	
-	u8    Dir;						    //¸ßÆµ×¢ÈëĞÅºÅ¼«ĞÔ	
-	float Uin;	              //¸ßÆµ×¢ÈëĞÅºÅ·ùÖµ
+	u8    Dir;						    //é«˜é¢‘æ³¨å…¥ä¿¡å·ææ€§	
+	float Uin;	              //é«˜é¢‘æ³¨å…¥ä¿¡å·å¹…å€¼
 	
-  float Id;                 //µ±Ç°dÖáµçÁ÷Öµ
-  float IdLast;      	      //ÉÏ´ÎdÖáµçÁ÷Öµ
-	float IdBase;      				//dÖá»ùÆµ·ÖÁ¿	
+  float Id;                 //å½“å‰dè½´ç”µæµå€¼
+  float IdLast;      	      //ä¸Šæ¬¡dè½´ç”µæµå€¼
+	float IdBase;      				//dè½´åŸºé¢‘åˆ†é‡	
 	
-  float Iq;	                //µ±Ç°qÖáµçÁ÷Öµ
-	float IqLast;             //ÉÏ´ÎqÖáµçÁ÷Öµ
-	float IqBase;             //qÖá»ùÆµ·ÖÁ¿	
+  float Iq;	                //å½“å‰qè½´ç”µæµå€¼
+	float IqLast;             //ä¸Šæ¬¡qè½´ç”µæµå€¼
+	float IqBase;             //qè½´åŸºé¢‘åˆ†é‡	
   
-	float Ialpha;             //¦ÁÖáµ±Ç°Öµ
-	float IalphaLast;         //¦ÁÖáÉÏ´ÎÖµ	
-	float IalphaHigh;					//¦ÁÖá¸ßÆµ·ÖÁ¿
-	float IalphaHighLast;			//¦ÁÖáÉÏ´Î¸ßÆµ·ÖÁ¿		
+	float Ialpha;             //Î±è½´å½“å‰å€¼
+	float IalphaLast;         //Î±è½´ä¸Šæ¬¡å€¼	
+	float IalphaHigh;					//Î±è½´é«˜é¢‘åˆ†é‡
+	float IalphaHighLast;			//Î±è½´ä¸Šæ¬¡é«˜é¢‘åˆ†é‡		
 	
-	float Ibeta;              //¦ÂÖáµ±Ç°Öµ	
-	float IbetaLast;          //¦ÂÖáÉÏ´ÎÖµ	
-	float IbetaHigh;          //¦ÂÖá¸ßÆµ·ÖÁ¿
-	float IbetaHighLast;	    //¦ÂÖáÉÏ´Î¸ßÆµ·ÖÁ¿
+	float Ibeta;              //Î²è½´å½“å‰å€¼	
+	float IbetaLast;          //Î²è½´ä¸Šæ¬¡å€¼	
+	float IbetaHigh;          //Î²è½´é«˜é¢‘åˆ†é‡
+	float IbetaHighLast;	    //Î²è½´ä¸Šæ¬¡é«˜é¢‘åˆ†é‡
 	
-	float IalphaOut;          //µçÁ÷°üÂç
-	float	IbetaOut;						//µçÁ÷°üÂç
+	float IalphaOut;          //ç”µæµåŒ…ç»œ
+	float	IbetaOut;		  //ç”µæµåŒ…ç»œ
+	u16   DivNum;             //æ³¨å…¥åˆ†é¢‘ç³»æ•° (1=10kHz, 2=5kHz, 4=2.5kHz)
+	u16   DivCnt;             //åˆ†é¢‘è®¡æ•°å™¨
 }HFI_STRUCT;
 
 typedef struct
 {	
-	s8    Dir;                  //·´µç¶¯ÊÆ¼ÆËã·½Ïò 
-	float Ts;	                  //µ÷ÓÃÖÜÆÚ		
+	s8    Dir;                  //åç”µåŠ¨åŠ¿è®¡ç®—æ–¹å‘ 
+	float Ts;	                  //è°ƒç”¨å‘¨æœŸ		
 	
-	float Ain;                  //ÊäÈëA
-	float Bin;	                //ÊäÈëB
+	float Ain;                  //è¾“å…¥A
+	float Bin;	                //è¾“å…¥B
 	
-	float ThetaErr;		          //¹Û²â½Ç¶ÈÎó²î		
-  float ThetaFore;		        //¹Û²â½Ç¶È µ¥Î»£º»¡¶È
-	float ThetaCompensate;      //²¹³¥ºóµÄ¹Û²â½Ç¶È µ¥Î»£º»¡¶È
-	float ETheta;               //²¹³¥ºóµÄ¹Û²â½Ç¶È 0-3999
+	float ThetaErr;		          //è§‚æµ‹è§’åº¦è¯¯å·®		
+  float ThetaFore;		        //è§‚æµ‹è§’åº¦ å•ä½ï¼šå¼§åº¦
+	float ThetaCompensate;      //è¡¥å¿åçš„è§‚æµ‹è§’åº¦ å•ä½ï¼šå¼§åº¦
+	float ETheta;               //è¡¥å¿åçš„è§‚æµ‹è§’åº¦ 0-3999
 	
-	float SinVal;               //ÕıÏÒÖµ
-	float CosVal;               //ÓàÏÒÖµ
+	float SinVal;               //æ­£å¼¦å€¼
+	float CosVal;               //ä½™å¼¦å€¼
 	
-  float	Kp;        		        //ËøÏà»·KP
-  float	Ki;          		      //ËøÏà»·KI
-	float PPart;	              //»ı·ÖÏî
-	float IPart;	              //»ı·ÖÏî
+  float	Kp;        		        //é”ç›¸ç¯KP
+  float	Ki;          		      //é”ç›¸ç¯KI
+	float PPart;	              //ç§¯åˆ†é¡¹
+	float IPart;	              //ç§¯åˆ†é¡¹
 		
-  float WeFore;	              //¹Û²âµç½ÇËÙ¶È£¨rad/s£©	
-	float WeForeLPF;         		//¹Û²âµç½ÇËÙ¶ÈÂË²¨Öµ	
-	float WeForeLPFFactor;  		//¹Û²âµç½ÇËÙ¶ÈÂË²¨ÏµÊı	
+  float WeFore;	              //è§‚æµ‹ç”µè§’é€Ÿåº¦ï¼ˆrad/sï¼‰	
+	float WeForeLPF;         		//è§‚æµ‹ç”µè§’é€Ÿåº¦æ»¤æ³¢å€¼	
+	float WeForeLPFFactor;  		//è§‚æµ‹ç”µè§’é€Ÿåº¦æ»¤æ³¢ç³»æ•°	
 }PLL_STRUCT;
 
 void HFI_Calculate(HFI_STRUCT *p);

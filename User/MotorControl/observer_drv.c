@@ -91,13 +91,15 @@ void HFI_Calculate(HFI_STRUCT *p)
 	p->IdLast = p->Id;
 	p->IqLast = p->Iq;		
 	
-    p->IalphaHighLast = p->IalphaHigh;
-    p->IbetaHighLast  = p->IbetaHigh; 
+	p->IalphaHighLast = p->IalphaHigh;
+	p->IbetaHighLast  = p->IbetaHigh; 
 	p->IalphaHigh = (p->Ialpha - p->IalphaLast) * 0.5f;    //提取α轴高频电流分量
 	p->IbetaHigh  = (p->Ibeta  - p->IbetaLast)  * 0.5f;	   //提取β轴高频电流分量	                                                       	                                                       
 	p->IalphaLast = p->Ialpha; 
 	p->IbetaLast  = p->Ibeta; 
 	
+	/****************************分频翻转*****************************/
+	p->DivCnt++;
 	if(p->Dir == 0)                                        
 	{
 		p->IalphaOut = p->IalphaHigh - p->IalphaHighLast;
@@ -106,7 +108,11 @@ void HFI_Calculate(HFI_STRUCT *p)
 		{
 			p->Uin = -p->Uin;
 		}
-		p->Dir = 1;
+		if(p->DivCnt >= p->DivNum)                         //分频到达后翻转方向
+		{
+			p->DivCnt = 0;
+			p->Dir = 1;
+		}
 	}
 	else if(p->Dir == 1)
 	{
@@ -116,8 +122,12 @@ void HFI_Calculate(HFI_STRUCT *p)
 		{
 			p->Uin = -p->Uin;
 		}
-		p->Dir = 0;
-	}	
+		if(p->DivCnt >= p->DivNum)                         //分频到达后翻转方向
+		{
+			p->DivCnt = 0;
+			p->Dir = 0;
+		}
+	}
 }
 
 
