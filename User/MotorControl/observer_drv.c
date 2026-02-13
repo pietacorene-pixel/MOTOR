@@ -1,12 +1,3 @@
-/**
-  ******************************************************************************
-  * 文件名程: 
-  * 作    者: 浩然
-  * 版    本: V1.0
-  * 编写日期: 
-  * 功    能: 
-  ******************************************************************************
-  */
 
 #include "observer_drv.h"  
 
@@ -39,205 +30,95 @@ void SMO_Calculate(SMO_STRUCT *p)
   * 返回参数:
   * 说    明:
   */
-//void HFI_Calculate(HFI_STRUCT *p)
-//{
-//	/*****************************初始角度辨识*******************************/
-//	if(p->NSDFlag == 0)
-//	{	
-//		p->NSDCount++;	
-//		p->IdHigh = (p->Id - p->IdLast) * 0.5f;           //提取高频电流分量
-//		if(p->IdHigh < 0)
-//		{
-//			p->IdHigh = -p->IdHigh;			
-//		}
-//		if(p->NSDCount < 400)                             //0  等待观测角度收敛
-//		{
-//			p->IdRef = 0.0f;
-//		}
-//		else if(p->NSDCount >= 400 && p->NSDCount < 600)  //正
-//		{
-//			p->IdRef = 5.0f;
-//		}
-//		else if(p->NSDCount >= 600 && p->NSDCount < 610)  //正+采样
-//		{
-//			p->IdRef = 5.0f;
-//			p->NSDSum1 += p->IdHigh;
-//		}
-//		else if(p->NSDCount >= 610 && p->NSDCount < 810)  //0
-//		{
-//			p->IdRef = 0.0f;
-//		}
-//		else if(p->NSDCount >= 810 && p->NSDCount < 1010) //负
-//		{
-//			p->IdRef = -5.0f;
-//		}
-//		else if(p->NSDCount >= 1010 && p->NSDCount < 1020)//负+采样
-//		{
-//			p->IdRef = -5.0f;
-//			p->NSDSum2 += p->IdHigh;
-//		}
-//		else if(p->NSDCount == 1020)                      //0
-//		{
-//			p->IdRef = 0.0f;
-//		}	
-//		else if(p->NSDCount == 1021)                      //0
-//		{
-//			p->NSDFlag = 1;	
-//			p->NSDCount = 0;		
-//			if(p->NSDSum2 > p->NSDSum1)
-//			{
-//				p->NSDOut = 1;
-//			}
-//			else
-//			{
-//				p->NSDOut = 0;
-//			}
-//		}			
-//	}
-//	/*****************************信号注入与解析*******************************/	
-//	p->IdBase = (p->Id + p->IdLast) * 0.5f;                //提取D轴基频电流分量
-//	p->IqBase = (p->Iq + p->IqLast) * 0.5f;    			       //提取Q轴基频电流分量
-//	p->IdLast = p->Id;
-//	p->IqLast = p->Iq;		
-//	
-//    p->IalphaHighLast = p->IalphaHigh;
-//    p->IbetaHighLast  = p->IbetaHigh; 
-//	p->IalphaHigh = (p->Ialpha - p->IalphaLast) * 0.5f;    //提取α轴高频电流分量
-//	p->IbetaHigh  = (p->Ibeta  - p->IbetaLast)  * 0.5f;	   //提取β轴高频电流分量	                                                       	                                                       
-//	p->IalphaLast = p->Ialpha; 
-//	p->IbetaLast  = p->Ibeta; 
-//	
-//	if(p->Dir == 0)                                        
-//	{
-//		p->IalphaOut = p->IalphaHigh - p->IalphaHighLast;
-//		p->IbetaOut  = p->IbetaHigh  - p->IbetaHighLast;	
-//		if(p->Uin < 0)
-//		{
-//			p->Uin = -p->Uin;
-//		}
-//		p->Dir = 1;
-//	}
-//	else if(p->Dir == 1)
-//	{
-//		p->IalphaOut = p->IalphaHighLast - p->IalphaHigh;
-//		p->IbetaOut  = p->IbetaHighLast  - p->IbetaHigh;	
-//		if(p->Uin > 0)
-//		{
-//			p->Uin = -p->Uin;
-//		}
-//		p->Dir = 0;
-//	}	
-//}
-
 void HFI_Calculate(HFI_STRUCT *p)
 {
-    
-    static uint16_t hfi_div_cnt = 0;
-    #define HFI_DIV_NUM  2  
-    
-    /*****************************初始角度辨识*******************************/
-    if(p->NSDFlag == 0)     //极性未辨识
-    {
-        p->NSDCount++;
-        p->IdHigh = (p->Id - p->IdLast) * 0.5f;           //提取高频电流分量
-    if(p->IdHigh < 0)
-    {
-        p->IdHigh = -p->IdHigh;
-    }
-    if(p->NSDCount < 400)                             //0  等待观测角度收敛
-    {
-        p->IdRef = 0.0f;
-    }
-    else if(p->NSDCount >= 400 && p->NSDCount < 600)  //正
-    {
-        p->IdRef = 5.0f;
-    }
-    else if(p->NSDCount >= 600 && p->NSDCount < 610)  //正+采样
-    {
-        p->IdRef = 5.0f;
-        p->NSDSum1 += p->IdHigh;
-    }
-    else if(p->NSDCount >= 610 && p->NSDCount < 810)  //0
-    {
-        p->IdRef = 0.0f;
-    }
-    else if(p->NSDCount >= 810 && p->NSDCount < 1010) //负
-    {
-        p->IdRef = -5.0f;
-    }
-    else if(p->NSDCount >= 1010 && p->NSDCount < 1020)//负+采样
-    {
-        p->IdRef = -5.0f;
-        p->NSDSum2 += p->IdHigh;
-    }
-    else if(p->NSDCount == 1020)                      //0
-    {
-        p->IdRef = 0.0f;
-    }
-    else if(p->NSDCount == 1021)                      //0
-    {
-        p->NSDFlag = 1;                              //极性完成辨识
-        p->NSDCount = 0;
-    if(p->NSDSum2 > p->NSDSum1)
-    {
-        p->NSDOut = 1;                           //极性辨识结果赋值
-    }
-    else
-    {
-        p->NSDOut = 0;                          //极性辨识结果赋值
-    }
-    }
-    }
-/*****************************信号注入与解析*******************************/
-    p->IdBase = (p->Id + p->IdLast) * 0.5f;                //提取D轴基频电流分量
-    p->IqBase = (p->Iq + p->IqLast) * 0.5f;        //提取Q轴基频电流分量
-    p->IdLast = p->Id;
-    p->IqLast = p->Iq;
-    
+	/*****************************初始角度辨识*******************************/
+	if(p->NSDFlag == 0)
+	{	
+		p->NSDCount++;	
+		p->IdHigh = (p->Id - p->IdLast) * 0.5f;           //提取高频电流分量
+		if(p->IdHigh < 0)
+		{
+			p->IdHigh = -p->IdHigh;			
+		}
+		if(p->NSDCount < 400)                             //0  等待观测角度收敛
+		{
+			p->IdRef = 0.0f;
+		}
+		else if(p->NSDCount >= 400 && p->NSDCount < 600)  //正
+		{
+			p->IdRef = 5.0f;
+		}
+		else if(p->NSDCount >= 600 && p->NSDCount < 610)  //正+采样
+		{
+			p->IdRef = 5.0f;
+			p->NSDSum1 += p->IdHigh;
+		}
+		else if(p->NSDCount >= 610 && p->NSDCount < 810)  //0
+		{
+			p->IdRef = 0.0f;
+		}
+		else if(p->NSDCount >= 810 && p->NSDCount < 1010) //负
+		{
+			p->IdRef = -5.0f;
+		}
+		else if(p->NSDCount >= 1010 && p->NSDCount < 1020)//负+采样
+		{
+			p->IdRef = -5.0f;
+			p->NSDSum2 += p->IdHigh;
+		}
+		else if(p->NSDCount == 1020)                      //0
+		{
+			p->IdRef = 0.0f;
+		}	
+		else if(p->NSDCount == 1021)                      //0
+		{
+			p->NSDFlag = 1;	
+			p->NSDCount = 0;		
+			if(p->NSDSum2 > p->NSDSum1)
+			{
+				p->NSDOut = 1;
+			}
+			else
+			{
+				p->NSDOut = 0;
+			}
+		}			
+	}
+	/*****************************信号注入与解析*******************************/	
+	p->IdBase = (p->Id + p->IdLast) * 0.5f;                //提取D轴基频电流分量
+	p->IqBase = (p->Iq + p->IqLast) * 0.5f;    			       //提取Q轴基频电流分量
+	p->IdLast = p->Id;
+	p->IqLast = p->Iq;		
+	
     p->IalphaHighLast = p->IalphaHigh;
     p->IbetaHighLast  = p->IbetaHigh; 
-    
-    p->IalphaHigh = (p->Ialpha - p->IalphaLast) * 0.5f;    //提取α轴高频电流分量
-    p->IbetaHigh  = (p->Ibeta  - p->IbetaLast)  * 0.5f;    //提取β轴高频电流分量                                                                                                                
-    p->IalphaLast = p->Ialpha; 
-    p->IbetaLast  = p->Ibeta; 
-    
-    
-    hfi_div_cnt++;
-
-        if(p->Dir == 0)     //根据极性方向注入电压                                   
-        {
-            p->IalphaOut = p->IalphaHigh - p->IalphaHighLast;
-            p->IbetaOut  = p->IbetaHigh  - p->IbetaHighLast;
-            if(p->Uin < 0)
-            {
-                p->Uin = -p->Uin;
-            }
-            if(hfi_div_cnt >= HFI_DIV_NUM) 
-            {
-                hfi_div_cnt = 0;
-                p->Dir = 1;
-            }
-        }
-        
-        else if(p->Dir == 1)
-        {
-            p->IalphaOut = p->IalphaHighLast - p->IalphaHigh;
-            p->IbetaOut  = p->IbetaHighLast  - p->IbetaHigh;
-            if(p->Uin > 0)
-            {
-                p->Uin = -p->Uin;
-            }
-            p->Dir = 0;
-        }
-  
-    else
-    {
-        p->IalphaOut=0;
-        p->IbetaOut=0;
-    }
+	p->IalphaHigh = (p->Ialpha - p->IalphaLast) * 0.5f;    //提取α轴高频电流分量
+	p->IbetaHigh  = (p->Ibeta  - p->IbetaLast)  * 0.5f;	   //提取β轴高频电流分量	                                                       	                                                       
+	p->IalphaLast = p->Ialpha; 
+	p->IbetaLast  = p->Ibeta; 
+	
+	if(p->Dir == 0)                                        
+	{
+		p->IalphaOut = p->IalphaHigh - p->IalphaHighLast;
+		p->IbetaOut  = p->IbetaHigh  - p->IbetaHighLast;	
+		if(p->Uin < 0)
+		{
+			p->Uin = -p->Uin;
+		}
+		p->Dir = 1;
+	}
+	else if(p->Dir == 1)
+	{
+		p->IalphaOut = p->IalphaHighLast - p->IalphaHigh;
+		p->IbetaOut  = p->IbetaHighLast  - p->IbetaHigh;	
+		if(p->Uin > 0)
+		{
+			p->Uin = -p->Uin;
+		}
+		p->Dir = 0;
+	}	
 }
-
 
 
 /**
