@@ -3,7 +3,7 @@
 <title>Static Call Graph - [MOTOR\MOTOR.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image MOTOR\MOTOR.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Feb 13 15:57:39 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Feb 13 22:24:47 2026
 <BR><P>
 <H3>Maximum Stack Usage =        392 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -477,7 +477,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_System_Run
 </UL>
 
-<P><STRONG><a name="[11a]"></a>Calculate_Position</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, position_drv.o(i.Calculate_Position))
+<P><STRONG><a name="[11b]"></a>Calculate_Position</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, position_drv.o(i.Calculate_Position))
 <BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sensoruse_Control
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sensorless_Control
 </UL>
@@ -1219,7 +1219,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMATxHalfCplt
 </UL>
 
-<P><STRONG><a name="[11b]"></a>HFI_Calculate</STRONG> (Thumb, 444 bytes, Stack size 8 bytes, observer_drv.o(i.HFI_Calculate))
+<P><STRONG><a name="[11a]"></a>HFI_Calculate</STRONG> (Thumb, 444 bytes, Stack size 8 bytes, observer_drv.o(i.HFI_Calculate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = HFI_Calculate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sensorless_Control
@@ -1521,7 +1521,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_System_Run
 </UL>
 
-<P><STRONG><a name="[109]"></a>Motor_Struct_Init</STRONG> (Thumb, 330 bytes, Stack size 0 bytes, motor_publicdata.o(i.Motor_Struct_Init))
+<P><STRONG><a name="[109]"></a>Motor_Struct_Init</STRONG> (Thumb, 338 bytes, Stack size 0 bytes, motor_publicdata.o(i.Motor_Struct_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_System_Init
 </UL>
 
@@ -1576,12 +1576,12 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32g4xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32g431xx.o(RESET)
 </UL>
-<P><STRONG><a name="[10f]"></a>Sensorless_Control</STRONG> (Thumb, 1832 bytes, Stack size 80 bytes, motor_sensorless.o(i.Sensorless_Control))
+<P><STRONG><a name="[10f]"></a>Sensorless_Control</STRONG> (Thumb, 1926 bytes, Stack size 80 bytes, motor_sensorless.o(i.Sensorless_Control))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Sensorless_Control &rArr; Calculate_Sin_Cos
 </UL>
 <BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SMO_Calculate
 <LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Calculate
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HFI_Calculate
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HFI_Calculate
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Electrical_Angle_Generator
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;T_Shaped_Acc_Dec
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pack_Transform
@@ -1589,7 +1589,7 @@ Global Symbols
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clark_Transform
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Speed
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Sin_Cos
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Position
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Position
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPack_Transform
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_SVPWM
 </UL>
@@ -1605,7 +1605,7 @@ Global Symbols
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clark_Transform
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Speed
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Sin_Cos
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Position
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_Position
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPack_Transform
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calculate_SVPWM
 </UL>

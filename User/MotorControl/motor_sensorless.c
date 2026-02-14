@@ -215,7 +215,11 @@ void Sensorless_Control()
             if(MC.HFI.NSDFlag == 0)
 			{
 				MC.IdPid.Ref = MC.HFI.IdRef;
-			}	
+			}
+//			else
+//			{
+//				MC.IdPid.Ref = MC.HFI.IdBias;            //NSD完成后注入d轴偏置电流(磁饱和)
+//			}	
             if(MC.HFI.NSDOut == 1)
 			{
 				MC.HFI.NSDOut = 0;
@@ -290,6 +294,10 @@ void Sensorless_Control()
             if(MC.HFI.NSDFlag == 0)
 			{
 				MC.IdPid.Ref = MC.HFI.IdRef;
+			}
+			else
+			{
+				MC.IdPid.Ref = MC.HFI.IdBias;            //NSD完成后注入d轴偏置电流(磁饱和)
 			}	
             if(MC.HFI.NSDOut == 1)
 			{
@@ -373,7 +381,11 @@ void Sensorless_Control()
             if(MC.HFI.NSDFlag == 0)
 			{
 				MC.IdPid.Ref = MC.HFI.IdRef;
-			}	
+			}
+//			else
+//			{
+//				MC.IdPid.Ref = MC.HFI.IdBias;            //NSD完成后注入d轴偏置电流(磁饱和)
+//			}	
             if(MC.HFI.NSDOut == 1)
 			{
 				MC.HFI.NSDOut = 0;

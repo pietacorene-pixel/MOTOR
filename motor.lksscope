@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lksscope appVersion="v1.4.2">
+    <params>
+        <param name="linkType" value="0"/>
+        <param name="jClock" value="5000000"/>
+        <param name="uClock" value="1000000"/>
+        <param name="commPort" value=""/>
+        <param name="commBaud" value="9600"/>
+        <param name="bleName" value=""/>
+        <param name="localIP" value=""/>
+        <param name="localPort" value=""/>
+        <param name="remoteIP" value=""/>
+        <param name="remotePort" value=""/>
+        <param name="rttAddr" value="20000000"/>
+        <param name="rttFreq" value="1000"/>
+        <param name="sampleInterval" value="1"/>
+        <param name="uiInterval" value="20"/>
+        <param name="maxPoint" value="20"/>
+        <param name="checkAxf" value="1"/>
+    </params>
+    <layouts>
+        <param name="geometry" value="AdnQywADAAD/////////9QAACgAAAAVYAAABGgAAAHMAAAjkAAAFEAAAAAACAAAACgAAAAAAAAAAIgAACf8AAAVX"/>
+        <param name="state" value="AAAA/wAAAAD9AAAAAQAAAAEAAAEAAAAEufwCAAAABPsAAAAMAFIAVABUVH1O5IhMAAAAAAD/////AAABEgD////7AAAACgBSAFQAVGVwY24AAAAAAP////8AAAE9AP////sAAAAIdTVnOmOnUjYAAAAAAP////8AAACxAP////sAAAAIj9CITGXlX9cAAAAAAP////8AAACBAP///wAACgAAAAS5AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAOAHQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABCAGEAcgBfADIBAAABFP////8AAAAAAAAAAAAAABYAdABvAG8AbABCAGEAcgBMAG8AZwBvAQAAAzr/////AAAAAAAAAAA="/>
+    </layouts>
+    <tabs curPage="0">
+        <tab title="标签页0" geometry="AdnQywADAAAAAAAAAAAAAAAAB2gAAASFAAAAAAAAAAD//////////wAAAAAAAAAACgAAAAAAAAAAAAAAB2gAAASF" state="AAAA/wAAAAD9AAAAAgAAAAAAAAOzAAAEhvwCAAAAAfsAAAAGZvJ+vwAwAAAAAAAAAASGAAAAAAAAAAAAAAABAAAHaQAABIb8AgAAAAH8AAAAAAAABIYAAACUAP////wBAAAAAvwAAAAAAAAEaQAAALoA/////AIAAAAE+wAAAA6a2JiRbOhRZXU1idJepgEAAAAAAAAClgAAAEgA////+wAAAAhTBX7cT+FT9wEAAAKaAAAB7AAAAEgA////+wAAAAoAcQBkj3R1NW1BAAAAAdwAAAGDAAAAAAAAAAD7AAAACE4Jdvh1NW1BAAAAA5QAAADyAAAASAD////7AAAADFf6eEBlcGNuepdT4wEAAARtAAAC/AAAAHMA////AAAAAAAABIYAAAAEAAAABAAAAAgAAAAI/AAAAAA=" checked="1"/>
+    </tabs>
+    <forms>
+        <form title="Form" type="0"/>
+        <form title="自定义变量" lv-width="150,100,100,100,100,100,100,100,100,100" type="1"/>
+        <form title="寄存器变量" lv-width="150,100,100,100,100,100,100,100,100,100" type="13" chip=""/>
+        <form title="代码变量" lv-width="150,100,100,100,100,100,100,100,100,100" type="2" mapFile="./MDK-ARM/MOTOR/MOTOR.axf"/>
+        <form title="运行日志" page="-1" visible="0" type="3" floating="0"/>
+        <form title="RTT命令行" sync2File="0" checkTStamp="0" page="-1" visible="0" type="4" encode="GBK" floating="0" syncFilePath=""/>
+        <form title="RTT数据" trigValue="0" autoRange="1" xTag="0" scatterStyle="1" page="-1" subMode="0" lineStyle="1" trigName="" visible="0" xCount="1000" scrollType="0" type="5" max="500" floating="0" trigType="0" min="-500"/>
+        <form title="电机控制" lv-width="150,100,100,100,100" page="-1" visible="0" type="12" floating="0">
+            <var desc="速度设定" name="" lower="0" upper="100" step="1"/>
+            <var desc="电流设定" name="" lower="0" upper="100" step="1"/>
+            <var desc="功率设定" name="" lower="0" upper="100" step="1"/>
+            <var desc="电机启停" name="" lower="0" upper="1" step="1"/>
+        </form>
+        <form title="Form" page="-1" visible="0" type="6" floating="0"/>
+        <form title="基础数据窗口" lv-width="150,150,100,100,100,100,100,100,100,120,100,100" page="0" visible="1" type="7" lv-hidden="" floating="0">
+            <var desc="MC.HFI.IbetaOut" name="MC.HFI.IbetaOut" interval="1" color="" addr="0x20000624" formula="" unit="" showType="Real"/>
+            <var desc="MC.HFI.IalphaOut" name="MC.HFI.IalphaOut" interval="1" color="" addr="0x20000620" formula="" unit="" showType="Real"/>
+        </form>
+        <form type="8" scatterStyle="1" visible="1" max="500" autoRange="1" title="高频注入电角度" refType="0" trigValue="0" trigName="" xCount="383.435" scrollType="0" xTag="0" floating="0" min="-500" refName="" page="0" lineStyle="1" filterType="1" subMode="0" trigType="0" refValue="0">
+            <var desc="MC.HPLL.ETheta" name="MC.HPLL.ETheta" color="#ff0000" subPlot="0"/>
+        </form>
+        <form type="8" scatterStyle="1" visible="0" max="500" autoRange="1" title="三相电流" refType="0" trigValue="0" trigName="" xCount="53.8224" scrollType="0" xTag="0" floating="0" min="-500" refName="" page="0" lineStyle="1" filterType="1" subMode="0" trigType="0" refValue="0">
+            <var desc="MC.Sample.IuReal" name="MC.Sample.IuReal" color="#ff0000" subPlot="0"/>
+            <var desc="MC.Sample.IvReal" name="MC.Sample.IvReal" color="#00ff00" subPlot="0"/>
+            <var desc="MC.Sample.IwReal" name="MC.Sample.IwReal" color="#00ffff" subPlot="0"/>
+        </form>
+        <form type="8" scatterStyle="1" visible="1" max="500" autoRange="1" title="包络信号" refType="0" trigValue="0" trigName="" xCount="75.0541" scrollType="0" xTag="0" floating="0" min="-500" refName="" page="0" lineStyle="1" filterType="1" subMode="0" trigType="0" refValue="0">
+            <var desc="MC.HFI.IalphaOut" name="MC.HFI.IalphaOut" color="#ff0000" subPlot="0"/>
+            <var desc="MC.HFI.IbetaOut" name="MC.HFI.IbetaOut" color="#00ff00" subPlot="0"/>
+        </form>
+    </forms>
+</lksscope>

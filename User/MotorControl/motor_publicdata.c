@@ -46,11 +46,12 @@ void Motor_Struct_Init()
 	MC.SPLL.Ki = 0.5f;                               //设置锁相环积分系数
 	MC.SPLL.WeForeLPFFactor = 0.01f;	               //设置观测电角速度低通滤波系数
 	
-	MC.HFI.Uin = 1.4f;	                             //设置高频注入的电压幅值
-	MC.HFI.DivNum = 2;                               //设置注入分频系数 (1=10kHz, 2=5kHz, 4=2.5kHz)
+	MC.HFI.Uin = 3.4f;	                             //设置高频注入的电压幅值
+	MC.HFI.IdBias = 2.0f;                            //设置d轴偏置电流(用于SPM磁饱和)
+	MC.HFI.DivNum = 5;                               //设置注入分频系数 (1=10kHz, 2=5kHz, 4=2.5kHz)
 	MC.HPLL.Dir = 1;                                 //设置锁相环输入方向
-	MC.HPLL.Kp = 900.0f;                             //设置锁相环比例系数
-	MC.HPLL.Ki = 20.0f;                              //设置锁相环积分系数
+	MC.HPLL.Kp = 50.0f;                             //设置锁相环比例系数
+	MC.HPLL.Ki = 0.02f;                              //设置锁相环积分系数
 	MC.HPLL.Ts = TS;                                 //设置锁相环运行时间间隔
 	MC.HPLL.WeForeLPFFactor = 0.01f;                 //设置观测电角速度低通滤波系数
 	

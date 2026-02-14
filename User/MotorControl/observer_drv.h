@@ -63,6 +63,7 @@ typedef struct
 	
 	float IalphaOut;          //电流包络
 	float	IbetaOut;		  //电流包络
+	float IdBias;             //d轴偏置电流 (用于SPM磁饱和增强凸极性)
 	u16   DivNum;             //注入分频系数 (1=10kHz, 2=5kHz, 4=2.5kHz)
 	u16   DivCnt;             //分频计数器
 }HFI_STRUCT;

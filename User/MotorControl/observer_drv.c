@@ -141,7 +141,7 @@ void PLL_Calculate(PLL_STRUCT *p)
 { 	 	
   p->ThetaErr = p->Dir * (p->CosVal * p->Ain + p->SinVal * p->Bin);
 	p->PPart  = p->Kp * p->ThetaErr;
-  p->IPart += p->Ki * p->ThetaErr;	
+  p->IPart = p->IPart + p->Ki * p->ThetaErr;	
 	p->WeFore = p->PPart + p->IPart;
 	p->WeForeLPF = p->WeFore * p->WeForeLPFFactor + p->WeForeLPF * (1 - p->WeForeLPFFactor);
 	p->ThetaFore += p->WeFore * p->Ts;
